@@ -1,0 +1,18 @@
+syntax = "proto3";
+
+message OperacionRequest {
+    int32 tipoOperacion = 1;
+    int32 dato = 2;
+}
+
+message ResultadoReceive { 
+    int32 resultado = 1;
+}
+
+message Nulo{
+}
+
+service Sistema {
+    rpc Listo(Nulo) returns (Nulo);
+    rpc OperacionParcial(OperacionRequest) returns (ResultadoReceive);
+}
