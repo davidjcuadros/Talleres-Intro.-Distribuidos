@@ -12,7 +12,7 @@ class ServicioSistema(SistemaServicer):
 
 def start():
     server1 = grpc.server(futures.ThreadPoolExecutor(max_workers=1))
-    add_SistemaServicer_to_server(ServicioSistema(), server)
+    add_SistemaServicer_to_server(ServicioSistema(), server1)
     server1.add_insecure_port('[::]:5000')
     print("El servidor principal se está ejecutando. Esperando solicitud de cliente.")
     server1.start()
