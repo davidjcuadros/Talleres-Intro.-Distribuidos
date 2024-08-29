@@ -8,6 +8,7 @@ def main():
     # Crear un canal gRPC no seguro
     channel = grpc.insecure_channel('localhost:5000')
     client = SistemaStub(channel)
+    print("Esperando conexión al servidor. ")
 
     try:
         grpc.channel_ready_future(channel).result(timeout=10)
