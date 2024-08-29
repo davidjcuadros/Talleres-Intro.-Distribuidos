@@ -27,8 +27,10 @@ def procesar_solicitudes_a_servidores(dato):
         tipo_operacion = i + 1  # El tipo de operación varía entre 1 y 4
         print("Aqui")
         resultado = enviar_solicitud(servidor, tipo_operacion, dato)
+        """
         if resultado == -1:
             resultado = enviar_solicitud(servidor+1, tipo_operacion, dato)
+        """
         print(f"Resultado de la operación en el servidor {servidor}: {resultado}")
         resultados.append(resultado)
     return sum(resultados)

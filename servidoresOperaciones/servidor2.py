@@ -23,7 +23,8 @@ class ServicioSistema(SistemaServicer):
         else:
             context.set_details('Operación no válida')
             context.set_code(grpc.StatusCode.INVALID_ARGUMENT)
-
+        print(f"Resultado: {resultado}")
+        print("Enviando a servidor principal. ")
         return ResultadoReceive(resultado=resultado)
 
 def start():
