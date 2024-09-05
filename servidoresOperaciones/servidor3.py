@@ -17,7 +17,7 @@ class ServicioSistema(SistemaServicer):
         elif tipo_operacion == 2:
             resultado = dato + 2
         elif tipo_operacion == 3:
-            resultado = dato / 2
+            resultado = dato + 100
         elif tipo_operacion == 4:
             resultado = dato ** 2
         else:

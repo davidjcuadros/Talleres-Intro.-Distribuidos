@@ -39,6 +39,11 @@ class SistemaStub(object):
                 request_serializer=servicio__pb2.Nulo.SerializeToString,
                 response_deserializer=servicio__pb2.Nulo.FromString,
                 _registered_method=True)
+        self.SolicitudOperacion = channel.unary_unary(
+                '/Sistema/SolicitudOperacion',
+                request_serializer=servicio__pb2.OperacionRequest.SerializeToString,
+                response_deserializer=servicio__pb2.ResultadoReceive.FromString,
+                _registered_method=True)
         self.OperacionParcial = channel.unary_unary(
                 '/Sistema/OperacionParcial',
                 request_serializer=servicio__pb2.OperacionRequest.SerializeToString,
@@ -50,6 +55,12 @@ class SistemaServicer(object):
     """Missing associated documentation comment in .proto file."""
 
     def Listo(self, request, context):
+        """Missing associated documentation comment in .proto file."""
+        context.set_code(grpc.StatusCode.UNIMPLEMENTED)
+        context.set_details('Method not implemented!')
+        raise NotImplementedError('Method not implemented!')
+
+    def SolicitudOperacion(self, request, context):
         """Missing associated documentation comment in .proto file."""
         context.set_code(grpc.StatusCode.UNIMPLEMENTED)
         context.set_details('Method not implemented!')
@@ -68,6 +79,11 @@ def add_SistemaServicer_to_server(servicer, server):
                     servicer.Listo,
                     request_deserializer=servicio__pb2.Nulo.FromString,
                     response_serializer=servicio__pb2.Nulo.SerializeToString,
+            ),
+            'SolicitudOperacion': grpc.unary_unary_rpc_method_handler(
+                    servicer.SolicitudOperacion,
+                    request_deserializer=servicio__pb2.OperacionRequest.FromString,
+                    response_serializer=servicio__pb2.ResultadoReceive.SerializeToString,
             ),
             'OperacionParcial': grpc.unary_unary_rpc_method_handler(
                     servicer.OperacionParcial,
@@ -102,6 +118,33 @@ class Sistema(object):
             '/Sistema/Listo',
             servicio__pb2.Nulo.SerializeToString,
             servicio__pb2.Nulo.FromString,
+            options,
+            channel_credentials,
+            insecure,
+            call_credentials,
+            compression,
+            wait_for_ready,
+            timeout,
+            metadata,
+            _registered_method=True)
+
+    @staticmethod
+    def SolicitudOperacion(request,
+            target,
+            options=(),
+            channel_credentials=None,
+            call_credentials=None,
+            insecure=False,
+            compression=None,
+            wait_for_ready=None,
+            timeout=None,
+            metadata=None):
+        return grpc.experimental.unary_unary(
+            request,
+            target,
+            '/Sistema/SolicitudOperacion',
+            servicio__pb2.OperacionRequest.SerializeToString,
+            servicio__pb2.ResultadoReceive.FromString,
             options,
             channel_credentials,
             insecure,
